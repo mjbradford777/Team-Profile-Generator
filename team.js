@@ -73,15 +73,15 @@ class Intern extends Employee {
 }
 
 const appendIntern = (newIntern) => {
-    fs.appendFile('team.html', `<div>\n<h3>${newIntern.name}</h3>\n<p>${newIntern.ID}</p>\n<p>${newIntern.email}</p>\n<p>${newIntern.role}</p>\n<p>${newIntern.school}</p>\n</div>\n`, 'utf8', (err) => {
+    fs.appendFile('team.html', `<div class="card">\n<div class="card-body">\n<h3 class="card-title"><i class="fas fa-graduation-cap"></i> ${newIntern.name}</h3>\n<p class="card-text">ID: ${newIntern.ID}</p>\n<p class="card-text">Email: ${newIntern.email}</p>\n<p class="card-text">${newIntern.role}</p>\n<p class="card-text">School: ${newIntern.school}</p>\n</div>\n</div>\n`, 'utf8', (err) => {
         if (err) throw err;
       });
     
-    return '</body>\n</html>';
+    return '</div>\n</div>\n</body>\n</html>';
 }
 
-function appendEnd() {
-    let result = appendIntern(newIntern);
+async function appendEnd() {
+    let result = await appendIntern(newIntern);
     fs.appendFile('team.html', `${result}`, 'utf8', (err) => {
         if (err) throw err;
       });
@@ -115,7 +115,7 @@ const createEngineer = () => {
         .then(answers => {
             newEngineer = new Engineer(answers.engineerName, answers.engineerID, answers.engineerEmail, 'Engineer', answers.engineerGithub);
             engineers.push(newEngineer);
-            fs.appendFile('team.html', `<div>\n<h3>${newEngineer.name}</h3>\n<p>${newEngineer.ID}</p>\n<p>${newEngineer.email}</p>\n<p>${newEngineer.role}</p>\n<p>${newEngineer.github}</p>\n</div>\n`, 'utf8', (err) => {
+            fs.appendFile('team.html', `<div class="card">\n<div class="card-body">\n<h3 class="card-title"><i class="fas fa-laptop-code"></i> ${newEngineer.name}</h3>\n<p class="card-text">ID: ${newEngineer.ID}</p>\n<p class="card-text">Email: ${newEngineer.email}</p>\n<p class="card-text">${newEngineer.role}</p>\n<p class="card-text">Github: ${newEngineer.github}</p>\n</div>\n</div>\n`, 'utf8', (err) => {
                 if (err) throw err;
               });
             if(answers.moreEngineers === 'Yes') {
@@ -185,7 +185,7 @@ inquirer
     .then(answers => {
         manager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, 'Manager', answers.officeNumber);
         console.log(manager);
-        fs.writeFile('team.html', `<!DOCTYPE html>\n<html lang="en-us">\n  <head>\n  <meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">\n</head>\n<body>\n<div>\n<h3>${manager.name}</h3>\n<p>${manager.ID}</p>\n<p>${manager.email}</p>\n<p>${manager.role}</p>\n<p>${manager.office}</p>\n</div>\n`, 'utf8', (err) => {
+        fs.writeFile('team.html', `<!DOCTYPE html>\n<html lang="en-us">\n  <head>\n  <meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">\n<script src="https://kit.fontawesome.com/2da00a6357.js" crossorigin="anonymous"></script>\n<link rel="stylesheet" href="style.css">\n</head>\n<body>\n<div class="container">\n<div class="row">\n<div class="card">\n<div class="card-body">\n<h3 class="card-title"><i class="fas fa-user"></i> ${manager.name}</h3>\n<p class="card-text">ID: ${manager.ID}</p>\n<p class="card-text">Email: ${manager.email}</p>\n<p class="card-text">${manager.role}</p>\n<p class="card-text">Office Number: ${manager.office}</p>\n</div>\n</div>\n`, 'utf8', (err) => {
             if (err) throw err;
           });
         createEngineer();
