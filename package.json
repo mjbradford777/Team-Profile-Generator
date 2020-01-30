@@ -1,0 +1,23 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "Application to generate an html employee tree based on user inputs",
+  "main": "team.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mjbradford777/Team-Profile-Generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mjbradford777/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/mjbradford777/Team-Profile-Generator#readme",
+  "dependencies": {
+    "inquirer": "^7.0.4",
+    "inquirer-recursive": "0.0.6"
+  }
+}
